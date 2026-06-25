@@ -30,33 +30,79 @@ main { padding: 0 5% 4rem; max-width: 1400px; margin: 0 auto; position: relative
 @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, 50px) scale(1.1); } }
 
 /* Hero Section */
-.hero { 
+.hero {
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    justify-content: center;
-    text-align: center; 
-    margin: 5rem auto 6rem; 
-    max-width: 900px; 
-    width: 100%; 
-}
-.gradient-text { font-size: 4rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-subtext { 
-    font-size: 1.25rem; 
-    color: #475569; 
-    margin-bottom: 3rem; 
-    line-height: 1.6; 
+    align-items: center;
     text-align: center;
-    max-width: 750px; 
+    margin: 5rem auto 6rem auto; /* 'auto' perfectly centers the main block */
+    width: 100%;
+    max-width: 900px;
+}
+
+.gradient-text {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 auto 1.5rem auto; /* Forces the H1 block to the center */
+    text-align: center;
+    background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtext {
+    font-size: 1.25rem;
+    color: #475569;
+    margin: 0 auto 3rem auto; /* Forces the paragraph block to the center */
+    line-height: 1.6;
+    text-align: center;
+    max-width: 750px;
 }
 
 /* Intro Cards */
-.intro-cards { display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; }
-.intro-card { background: var(--surface); backdrop-filter: blur(10px); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border); width: 250px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: 0.3s; }
-.intro-card:hover { transform: translateY(-5px); border-color: #bfdbfe; box-shadow: var(--shadow-lg); }
-.intro-card .icon { font-size: 2rem; margin-bottom: 1rem; }
-.intro-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-.intro-card p { font-size: 0.9rem; color: var(--text-muted); }
+.intro-cards { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    gap: 2rem; 
+    margin: 3rem auto 0 auto; 
+    width: 100%;
+}
+
+.intro-card { 
+    background: var(--surface); 
+    backdrop-filter: blur(10px); 
+    padding: 1.5rem; 
+    border-radius: 16px; 
+    border: 1px solid var(--border); 
+    width: 250px; 
+    text-align: left; /* Keep text inside the cards readable */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02); 
+    transition: 0.3s; 
+}
+
+.intro-card:hover { 
+    transform: translateY(-5px); 
+    border-color: #bfdbfe; 
+    box-shadow: var(--shadow-lg); 
+}
+
+.intro-card .icon { 
+    font-size: 2rem; 
+    margin-bottom: 1rem; 
+}
+
+.intro-card h4 { 
+    font-size: 1.1rem; 
+    margin-bottom: 0.5rem; 
+}
+
+.intro-card p { 
+    font-size: 0.9rem; 
+    color: var(--text-muted); 
+}
 
 /* Grid & Cards */
 .section-title { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
