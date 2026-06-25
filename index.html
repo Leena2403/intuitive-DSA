@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Through Real World Systems</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <script>MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };</script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/material-ocean.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Systems<strong>DSA</strong></div>
+        <div class="nav-links">
+            <button class="btn-text" onclick="goHome()">Dashboard</button>
+        </div>
+    </nav>
+
+    <main id="app-container">
+        
+        <section id="home-view" class="view active">
+            <div class="hero">
+                <span class="pill-badge">v2.0 Prototype</span>
+                <h1>Real Systems. Real Algorithms.</h1>
+                <p>Interactive visualizations of how tech giants architect their core features.</p>
+            </div>
+
+            <div class="system-grid" id="main-grid">
+                </div>
+        </section>
+
+        <section id="system-view" class="view">
+            <button class="btn-back" onclick="goHome()">&larr; Back to Dashboard</button>
+            
+            <div class="system-header">
+                <div>
+                    <span class="tag" id="sys-tag"></span>
+                    <h1 id="sys-title"></h1>
+                </div>
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('learn')">System Architecture</button>
+                    <button class="tab-btn" onclick="switchTab('practice')">IDE Practice</button>
+                </div>
+            </div>
+
+            <div id="tab-learn" class="tab-content active">
+                <div class="split-layout">
+                    
+                    <div class="theory-panel">
+                        <div class="card company-switcher">
+                            <h3>Production Use Cases</h3>
+                            <div class="company-tabs" id="company-tabs"></div>
+                            <div class="company-desc" id="company-desc"></div>
+                        </div>
+                        
+                        <div class="card math-card">
+                            <h3>Mathematical Intuition</h3>
+                            <p id="sys-math"></p>
+                        </div>
+                    </div>
+
+                    <div class="visualizer-panel card">
+                        <div class="viz-header">
+                            <h3>Live System Simulation</h3>
+                            <span class="pulse-indicator">Live</span>
+                        </div>
+                        <div id="sys-demo" class="demo-wrapper"></div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div id="tab-practice" class="tab-content">
+                <div class="ide-layout">
+                    <div class="ide-sidebar card">
+                        <h3>Challenge</h3>
+                        <p id="sys-challenge-text"></p>
+                        <div class="test-cases">
+                            <h4>I/O Specs:</h4>
+                            <pre id="sys-io"></pre>
+                        </div>
+                    </div>
+                    <div class="ide-main">
+                        <div class="ide-header">
+                            <span class="file-name">algorithm.js</span>
+                            <button class="btn-success" onclick="runMockTests()">Compile & Run</button>
+                        </div>
+                        <textarea id="code-editor"></textarea>
+                        <div class="terminal" id="terminal-output">> Waiting for compilation...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
