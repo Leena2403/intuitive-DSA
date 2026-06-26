@@ -1,7 +1,7 @@
 
 const sysData = {
     'binary-search': {
-        tag: "Binary Search", title: "Geospatial Indexing",
+        tag: "Binary Search", title: "Divide and Conquer Algorithms",
         companies: [
             { name: "Git", desc: "Git bisect employs a binary search algorithm to rapidly pinpoint the specific commit that introduced a bug, navigating through the project's history in logarithmic time. By testing a middle commit between a known good and bad commit, the tool eliminates half of the remaining search space with each iteration. This method isolates the problematic change out of 1,000 commits in only 10 steps, greatly accelerating the debugging process" },
         ],
