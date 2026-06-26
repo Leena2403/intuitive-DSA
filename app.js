@@ -3,9 +3,7 @@ const sysData = {
     'binary-search': {
         tag: "Binary Search", title: "Geospatial Indexing",
         companies: [
-            { name: "Uber / Lyft", desc: "Drivers' locations are stored in heavily sorted spatial indexes. Binary search allows the system to find the nearest driver in milliseconds instead of scanning the whole city." },
-            { name: "MySQL", desc: "B-Tree database indexes rely on binary search at every node layer to rapidly locate requested database rows." },
-            { name: "AWS Route53", desc: "DNS servers use binary search over IP range intervals to quickly determine where network packets should be routed." }
+            { name: "Git", desc: "Git bisect employs a binary search algorithm to rapidly pinpoint the specific commit that introduced a bug, navigating through the project's history in logarithmic time. By testing a middle commit between a known good and bad commit, the tool eliminates half of the remaining search space with each iteration. This method isolates the problematic change out of 1,000 commits in only 10 steps, greatly accelerating the debugging process" },
         ],
         math: `The search space $N$ is halved at every step: <br>$$N \\rightarrow \\frac{N}{2} \\rightarrow \\frac{N}{4} \\dots \\rightarrow 1$$<br> Yielding logarithmic Time Complexity: $O(\\log N)$.`,
         challenge: "Write a function to find the index of a target driver distance in a sorted array.",
@@ -24,9 +22,8 @@ const sysData = {
     'bfs': {
         tag: "Breadth-First Search", title: "Network Expansion",
         companies: [
-            { name: "LinkedIn", desc: "Discovers '2nd degree connections'. BFS guarantees you see immediate mutuals before random strangers deep in the graph." },
-            { name: "Googlebot", desc: "Web crawlers index the internet layer by layer. They scrape a homepage, queue all its links, and process them before going deeper." },
-            { name: "BitTorrent", desc: "Peer-to-peer node discovery broadcasts outward in concentric rings to find the nearest file-sharing relay nodes." }
+            { name: "LinkedIn", desc: "Discovers '2nd degree connections'. optimized Bidirectional BFS (searching from both you and the target user simultaneously to meet in the middle) guarantees you see immediate mutuals before random strangers deep in the graph." },
+            { name: "BitTorrent", desc: "Torrent client utilizes a Breadth-First Search (BFS) strategy to discover peers holding required file pieces. It first queries its immediate layer of known tracker peers before expanding radially to secondary connected peers if parts are still missing." }
         ],
         math: `Processes Vertices $V$ and Edges $E$ exactly once. <br>$$O(|V| + |E|)$$<br> Utilizes a Queue (FIFO) to enforce layer-by-layer expansion.`,
         challenge: "Given an adjacency list, return all nodes at exactly 'k' degrees of separation.",
@@ -59,9 +56,8 @@ const sysData = {
     'trie': {
         tag: "Trie (Prefix Tree)", title: "Autocomplete Systems",
         companies: [
-            { name: "Google", desc: "As you type queries, Google traverses a distributed Trie. The path prefix immediately yields cached top search suggestions." },
-            { name: "Apple (iOS)", desc: "The autocorrect dictionary operates via Tries, physically matching your keystrokes to spatial nodes in memory." },
-            { name: "AWS VPC", desc: "IP routing tables use Radix Tries to perform 'Longest Prefix Matching' to route incoming web traffic." }
+            { name: "Google", desc: "As you type in the search bar, the system follows your letters down the tree to instantly suggest popular search phrases." },
+            { name: "Spell Checkers", desc: "Apps like Microsoft Word check your typing against a word tree; if your letters wander off a valid path, it flags a typo." }
         ],
         math: `Lookups do not scale with massive database sizes $N$. They strictly depend on the length of the typed string $L$. <br>$$O(L)$$`,
         challenge: "Implement a Trie with insert() and startsWith().",
@@ -87,11 +83,10 @@ const sysData = {
         `
     },
     'sliding-window': {
-        tag: "Sliding Window", title: "API Rate Limiting",
+        tag: "Sliding Window", title: "Continuous Tracking",
         companies: [
-            { name: "Stripe", desc: "Stripe limits you to 100 API requests per second. A sliding window tracks moving sums without recalculating massive arrays." },
-            { name: "YouTube", desc: "Video players monitor average download throughput over a sliding 5-second window to dynamically adjust video quality (1080p to 720p)." },
-            { name: "Datadog", desc: "Triggers anomaly alerts by analyzing a moving average of server CPU spikes over rolling time blocks." }
+            { name: "Netflix", desc: "The app tracks your internet speed over a rolling 5-second window to instantly change your video quality if your connection drops." },
+            { name: "Fitbit / Apple Watch", desc: "The device calculates your live heart rate or running pace by averaging your data over the last 60 seconds, moving the window forward each second." }
         ],
         math: `Avoids nested loop recalculation $O(N \\times K)$. Adds the new element, subtracts the expired element. <br>$$O(N)$$`,
         challenge: "Given an array of request counts per second, find if any contiguous K seconds exceed threshold T.",
@@ -107,37 +102,12 @@ const sysData = {
             <p id="sw-status" style="margin-top:20px; font-family:var(--font-code); color:#10b981;">Window Sum: 0</p>
         `
     },
-    'lru-cache': {
-        tag: "LRU Cache", title: "Memory Eviction",
-        companies: [
-            { name: "Redis", desc: "When Redis runs out of RAM, it evicts the 'Least Recently Used' keys to make room for new, hot database queries." },
-            { name: "Chrome", desc: "The browser stores images locally. When cache fills up, it deletes the oldest accessed images to save new ones." },
-            { name: "Cloudflare", desc: "CDN Edge servers cache static HTML. If an article hasn't been requested recently, it is evicted from edge memory." }
-        ],
-        math: `Combines a Doubly Linked List + Hash Map to achieve $O(1)$ insertions, lookups, and deletions.`,
-        challenge: "Implement an LRU Cache with get() and put() running in O(1) time.",
-        io: "Input: put(A), put(B), get(A), put(C) (Cap:2)\nOutput: B is evicted.",
-        renderDemo: () => `
-            <div style="display:flex; gap:10px; margin-bottom:2rem;">
-                <button class="btn-primary" onclick="visualizeLRU('GET', 'A')">GET Key A</button>
-                <button class="btn-success" onclick="visualizeLRU('PUT', 'D')">PUT Key D</button>
-            </div>
-            <div style="display:flex; gap:2rem; align-items:center;">
-                <div style="display:flex; flex-direction:column; gap:10px; width:150px;" id="lru-stack">
-                    </div>
-                <div style="color:#64748b; font-size:0.8rem; text-align:center; line-height:1.8;">
-                    <span style="color:#10b981;">&larr; MRU (Recent)</span><br><br><br>
-                    <span style="color:#ef4444;">&larr; LRU (Evict Next)</span>
-                </div>
-            </div>
-        `
-    },
+
     'bloom-filter': {
         tag: "Bloom Filter", title: "Massive Scale Fast-Lookup",
         companies: [
             { name: "Medium", desc: "Uses Bloom filters to instantly check if a user has already read an article before recommending it, avoiding expensive DB joins." },
-            { name: "Google Chrome", desc: "Stores a local Bloom Filter of millions of known malicious URLs. If your URL hashes to 'Yes', it checks the remote server to be sure." },
-            { name: "Cassandra DB", desc: "Checks a memory-resident Bloom Filter before reading from disk. If the filter says 'No', it saves a massive disk I/O operation." }
+            { name: "Instagram", desc: "When you sign up, it checks a fast filter to see if a username is available. If the filter says 'No', the app immediately tells you that the name is taken." }
         ],
         math: `A bit array of size $m$ and $k$ hash functions. False positives are possible, but false negatives are impossible.<br>Space is extremely optimized: ~10 bits per element.`,
         challenge: "Simulate a Bloom Filter with an array of size 10 and 2 simple modulo hash functions.",
