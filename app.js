@@ -1,4 +1,4 @@
-// --- 1. ARCHITECTURE REPOSITORY (7 Algorithms) ---
+
 const sysData = {
     'binary-search': {
         tag: "Binary Search", title: "Geospatial Indexing",
